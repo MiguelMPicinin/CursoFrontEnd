@@ -1,5 +1,6 @@
 //Tipos de Operações em Java Script
 
+//Operadores Aritmieticos
 let a = 10;
 let b = 3;
 
