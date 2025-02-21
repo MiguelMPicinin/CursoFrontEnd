@@ -10,3 +10,9 @@ console.log(numMaior20);
 //reduce
 let soma = numeros.reduce((acumulador, valorAtual) => acumulador + valorAtual,0);
 console.log(soma); //150
+
+//sort (organizador)
+
+let aleatorio = [2, 5, 1, 3, 8, 6, 9, 0];
+aleatorio.sort();
+console.log(aleatorio);
