@@ -1,8 +1,11 @@
 // Operações Avançadas em Vetores (arrays)
-
-// filtros
-
 let numeros = [10, 20, 30, 40, 50];
+
+// map - percorre e faz uma ação
+let numerosNovos= numeros.map(x => x*3);
+console.log(numerosNovos);
+
+//filtros (Filter) - Percorre e faz uma seleção
 
 let numMaior20 = numeros.filter(x => x > 20);
 console.log(numMaior20);

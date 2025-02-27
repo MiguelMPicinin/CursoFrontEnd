@@ -30,6 +30,12 @@ palavras.shift() //remove o primeiro elemento]
 palavras[2] = "sacolas";
 console.log(palavras);
 
+//percorrer um array(loop) - for
+for (let i = 0; i < numeros.length; i++) {
+    console.log("numero da posição [" + i + "] =" + numeros[i]);
+}
+
+
 // forEach - repetição em um  vetor
 palavras.forEach(palavra => {
     console.log(palavra);
@@ -37,7 +43,7 @@ palavras.forEach(palavra => {
 
 // Splice
 
-palavras.splice(1,1); //remove pelo indice remveu "sabato"
+palavras.splice(1,1); //remove pelo indice(Splice(Posição, Quantidade))
 console.log(palavras)
 
 let numerosDobro = numeros.map(x => x*10);
