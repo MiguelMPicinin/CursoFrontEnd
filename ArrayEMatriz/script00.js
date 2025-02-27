@@ -23,9 +23,12 @@ palavras.unshift("Prédio"); //adiciona no começo do array
 console.log(palavras);
 
 // remover elementos
-
 palavras.pop()  //remove o ultimo elemento
-palavras.shift() //remove o primeiro elemento
+palavras.shift() //remove o primeiro elemento]
+
+//Alterar um elemento
+palavras[2] = "sacolas";
+console.log(palavras);
 
 // forEach - repetição em um  vetor
 palavras.forEach(palavra => {
