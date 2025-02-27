@@ -5,6 +5,7 @@ let dados = []; // uso de colchetes permite a declaração de uma Array
 
 let numeros = [1,2,3,4,5,6,7,8,9];
 let palavras = ["Bola", "Sapato", "Caixa"];
+let mista = [1, "texto", true];
 
 console.log(numeros.length); //medir quantidade de elementos do Array
 
