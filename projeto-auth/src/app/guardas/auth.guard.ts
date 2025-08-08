@@ -1,9 +1,11 @@
 import { Injectable } from "@angular/core";
-import { CanActivate, CanActivateFn } from "@angular/router";
+import { CanActivate } from "@angular/router";
 import { AuthService } from "../services/auth.service";
 
 @Injectable({providedIn: 'root'})
 
+//Midleware
+//Implements ( faz um contrato com uma interface )
 export class AuthGuard implements CanActivate {
 
   constructor(private authService: AuthService, private router : Router){}
