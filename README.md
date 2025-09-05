@@ -8,11 +8,17 @@ graph TD
     subgraph Cliente["Navegador"]
         UI
     end
+
     subgraph Front["React"]
         FrontEnd
-    endsubgraph Back["API"]
+    end
+
+    subgraph Back["API"]
         BackEnd
-    endsubgraph Banco["MongoDB"]
+        
+    end
+    
+    subgraph Banco["MongoDB"]
         BD
     end
 
