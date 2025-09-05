@@ -3,7 +3,7 @@
 ## Diagramas com Mermaid
 
 ### Diagrama de fluxo de arquitetura de projeto
-'''mermaid
+´´´mermaid
 graph TD
     subgraph Cliente["Navegador"]
         UI
@@ -25,4 +25,4 @@ graph TD
     BackEnd-->FrontEnd
     FrontEnd-->UI
 
-'''
+´´´
