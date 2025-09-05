@@ -15,7 +15,7 @@ graph TD
 
     subgraph Back["API"]
         BackEnd
-        
+
     end
     
     subgraph Banco["MongoDB"]
@@ -26,7 +26,7 @@ graph TD
 
     UI-->FrontEnd
     FrontEnd-->BackEnd
-    BackEnd--BD
+    BackEnd-->BD
     BD-->BackEnd
     BackEnd-->FrontEnd
     FrontEnd-->UI
