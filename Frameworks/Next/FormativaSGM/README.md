@@ -194,6 +194,7 @@ A tabela abaixo apresenta os riscos identificados no projeto **SGM**, organizado
 
 ## Prototipagem
 
+https://www.figma.com/design/fTMYigrKBRT4OZKBpUrZHJ/Untitled?node-id=0-1&t=zPCSn3Rj39t2J19O-1
 
 ## Codificação
 

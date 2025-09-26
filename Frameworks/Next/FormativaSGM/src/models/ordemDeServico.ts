@@ -1,52 +1,37 @@
-import mongoose, { Schema } from "mongoose";
+//classe para equipamento
 
-export interface OrdemDeServico{
-    usuarioId: string;
-    maquinaId: string;
-    titulo: string;
-    descricao: string;
+import mongoose, { Document, Model, Schema } from "mongoose";
+
+export interface IOrdemServico extends Document{
+    _id:string;
+    titulo:string;
+    descricao:string;
     tipoManutencao: string;
-    status: "Funcionando";
-
+    status: string;
+    dataSolicitada: Date;
+    dataFinalizada: Date | null;
+    tecnicoId: string;
+    equipamentoId: string;
 }
 
-const OrdemSchema: Schema<OrdemDeServico> = new mongoose.Schema({
-    usuarioId:{
-        type: String,
-        required:[true, "O id de usuario é necessario"],
-        trim: true,
-        maxLength: [50, "Máximo de 50 char"]
-    },
-    maquinaId:{
-        type: String,
-        required:[true, "O id da maquina é necessario"],
-        trim: true,
-        maxLength: [50, "Máximo de 50 char"]
-    },
-    titulo:{
-        type: String,
-        trim: true,
-        maxLength: [100, "Máximo de 100 char"]
-    },
-    descricao:{
-        type: String,
-        trim: true,
-        maxLength: [100, "Máximo de 100 char"],
-    },
-    tipoManutencao:{
-        type: String,
-        trim:true,
-        maxLength:[100, "Tem que ter no maxiom 100 char"],
-        required:[true, "O Funcionario tem que ter ua função"]
-    },
-   status:{
-        type: String,
-        enum: ["Funcionando", "Em Manutenção", "Quebrada"],
-        required:[true, "è necessario a maquina ter um status"],
-        default: "Funcionando"
-   }
+const OrdemServicoSchema:Schema<IOrdemServico> = new Schema({
+    titulo:{type:String, required: true},
+    descricao:{type:String, required: true},
+    tipoManutencao:{type:String,
+        enum:["preventiva","emergencia","preditiva"],
+        required:true},
+    status: {type:String, 
+            enum: ["ativo","inativo"],
+            default: "ativo"},
+    dataSolicitada:{type: Date, default: Date.now},
+    dataFinalizada:{type: Date, default:null},
+    tecnicoId: {type: String, required: true},
+    equipamentoId: {type: String, required: true},
+
+       
 });
 
-const OrdemDeServico: Model<OrdemDeServico> = mongoose.models.Tarefa || mongoose.model<OrdemDeServico>("Ordem de Servico", OrdemSchema);
+const OrdemServico: Model<IOrdemServico> = mongoose.models.Equipamento 
+|| mongoose.model<IOrdemServico>("OrdemServico",OrdemServicoSchema);
 
-export default OrdemDeServico;
+export default OrdemServico;
