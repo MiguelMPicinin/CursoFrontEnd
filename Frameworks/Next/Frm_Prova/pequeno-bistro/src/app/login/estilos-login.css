@@ -1,0 +1,109 @@
+.container-login {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e8f5e8 0%, #e3f2fd 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.cartao-login {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 440px;
+}
+
+.cabecalho-login {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.icone-login {
+    width: 80px;
+    height: 80px;
+    background-color: #28a745;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+}
+
+.icone-login span {
+    font-size: 32px;
+    color: white;
+}
+
+.titulo-login {
+    font-size: 28px;
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 8px;
+}
+
+.subtitulo-login {
+    font-size: 16px;
+    color: #6c757d;
+}
+
+.formulario-login {
+    margin-bottom: 24px;
+}
+
+.mensagem-erro {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.informacoes-login {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #e9ecef;
+}
+
+.titulo-informacoes {
+    font-size: 14px;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 12px;
+}
+
+.lista-usuarios {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.usuario-teste {
+    font-size: 13px;
+    color: #6c757d;
+    margin: 0;
+}
+
+@media (max-width: 480px) {
+    .cartao-login {
+        padding: 24px;
+    }
+    
+    .icone-login {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .icone-login span {
+        font-size: 24px;
+    }
+    
+    .titulo-login {
+        font-size: 24px;
+    }
+}
