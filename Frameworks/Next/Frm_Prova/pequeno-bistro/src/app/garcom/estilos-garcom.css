@@ -1,0 +1,277 @@
+.pagina-garcom {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.icone-garcom {
+    width: 36px;
+    height: 36px;
+    background-color: #007bff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
+
+.icone-garcom span {
+    font-size: 16px;
+    color: white;
+}
+
+.titulo-pagina {
+    font-size: 20px;
+    font-weight: 600;
+    color: #212529;
+}
+
+.saudacao-usuario {
+    color: #495057;
+    margin-right: 16px;
+}
+
+.lg-grade-3-2 {
+    grid-template-columns: 2fr 1fr;
+    gap: 32px;
+}
+
+.md-grade-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Filtros de Categoria */
+.filtros-categoria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.botao-categoria {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+
+.botao-categoria.ativo {
+    background-color: #007bff;
+    color: white;
+}
+
+.botao-categoria:hover {
+    background-color: #e9ecef;
+}
+
+.botao-categoria.ativo:hover {
+    background-color: #0056b3;
+}
+
+/* Itens do Cardápio */
+.cartao-item-cardapio {
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+.cartao-item-cardapio:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.cabecalho-item-cardapio {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.nome-item-cardapio {
+    font-size: 16px;
+    font-weight: 600;
+    color: #212529;
+    margin: 0;
+}
+
+.preco-item-cardapio {
+    font-size: 16px;
+    font-weight: 700;
+    color: #007bff;
+}
+
+.categoria-item-cardapio {
+    font-size: 14px;
+    color: #6c757d;
+    text-transform: capitalize;
+    margin-bottom: 12px;
+}
+
+.acao-item-cardapio {
+    margin-top: 12px;
+}
+
+/* Seção do Pedido */
+.pedido-fixo {
+    position: sticky;
+    top: 100px;
+}
+
+.lista-itens-pedido {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.pedido-vazio {
+    text-align: center;
+    color: #6c757d;
+    padding: 40px 20px;
+    font-style: italic;
+}
+
+.item-pedido-atual {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.info-item-pedido {
+    flex: 1;
+}
+
+.nome-item-pedido {
+    font-size: 14px;
+    font-weight: 600;
+    color: #212529;
+    margin: 0 0 4px 0;
+}
+
+.preco-unitario-item {
+    font-size: 12px;
+    color: #6c757d;
+    margin: 0;
+}
+
+.controles-quantidade {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.botao-quantidade {
+    width: 32px;
+    height: 32px;
+    background-color: #e9ecef;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.botao-quantidade:hover {
+    background-color: #dee2e6;
+}
+
+.quantidade-item {
+    font-weight: 600;
+    width: 24px;
+    text-align: center;
+}
+
+.botao-remover-item {
+    background: none;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 8px;
+}
+
+.botao-remover-item:hover {
+    color: #c82333;
+}
+
+/* Resumo do Pedido */
+.resumo-pedido {
+    border-top: 1px solid #dee2e6;
+    padding-top: 20px;
+}
+
+.linha-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.texto-total {
+    font-size: 16px;
+    font-weight: 600;
+    color: #212529;
+}
+
+.valor-total {
+    font-size: 20px;
+    font-weight: 700;
+    color: #28a745;
+}
+
+@media (max-width: 1024px) {
+    .lg-grade-3-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .pedido-fixo {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .md-grade-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .cabecalho-conteudo {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    
+    .icone-garcom {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+    
+    .filtros-categoria {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .item-pedido-atual {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .controles-quantidade {
+        align-self: flex-end;
+    }
+}

@@ -1,0 +1,268 @@
+.pagina-cozinha {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.icone-cozinha {
+    width: 36px;
+    height: 36px;
+    background-color: #ffc107;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
+
+.icone-cozinha span {
+    font-size: 16px;
+    color: #212529;
+}
+
+.titulo-pagina {
+    font-size: 20px;
+    font-weight: 600;
+    color: #212529;
+}
+
+.saudacao-usuario {
+    color: #495057;
+    margin-right: 16px;
+}
+
+.cabecalho-cozinha {
+    margin-bottom: 32px;
+}
+
+.titulo-principal-cozinha {
+    font-size: 32px;
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 8px;
+}
+
+.subtitulo-cozinha {
+    font-size: 18px;
+    color: #6c757d;
+}
+
+.lg-grade-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.xl-grade-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Pedido Vazio */
+.pedido-vazio-cozinha {
+    text-align: center;
+    padding: 60px 40px;
+}
+
+.icone-pedido-vazio {
+    width: 80px;
+    height: 80px;
+    background-color: #d4edda;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+}
+
+.icone-pedido-vazio span {
+    font-size: 32px;
+    color: #155724;
+}
+
+.titulo-pedido-vazio {
+    font-size: 24px;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 12px;
+}
+
+.descricao-pedido-vazio {
+    font-size: 16px;
+    color: #6c757d;
+    line-height: 1.5;
+}
+
+/* Pedidos da Cozinha */
+.pedido-cozinha {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pedido-cozinha:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.cabecalho-pedido-cozinha {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.mesa-pedido-cozinha {
+    font-size: 24px;
+    font-weight: 700;
+    color: #212529;
+    margin: 0 0 4px 0;
+}
+
+.data-pedido-cozinha {
+    font-size: 14px;
+    color: #6c757d;
+    margin: 0;
+}
+
+.status-pedido-cozinha {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Itens do Pedido na Cozinha */
+.itens-pedido-cozinha {
+    margin-bottom: 20px;
+}
+
+.titulo-itens-cozinha {
+    font-size: 16px;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 12px;
+}
+
+.item-pedido-cozinha {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.item-pedido-cozinha:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.info-item-cozinha {
+    flex: 1;
+}
+
+.nome-item-cozinha {
+    font-size: 14px;
+    font-weight: 600;
+    color: #212529;
+    margin: 0 0 4px 0;
+}
+
+.observacao-item {
+    font-size: 12px;
+    color: #6c757d;
+    font-style: italic;
+    margin: 0;
+    padding-left: 8px;
+    border-left: 2px solid #ffc107;
+}
+
+.valor-item-cozinha {
+    font-size: 14px;
+    color: #495057;
+    font-weight: 500;
+}
+
+/* Rodape do Pedido */
+.rodape-pedido-cozinha {
+    border-top: 1px solid #e9ecef;
+    padding-top: 20px;
+}
+
+.total-pedido-cozinha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.texto-total-cozinha {
+    font-size: 16px;
+    font-weight: 600;
+    color: #212529;
+}
+
+.valor-total-cozinha {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffc107;
+}
+
+/* Seção de Preparo */
+.secao-preparo {
+    margin-top: 48px;
+}
+
+.texto-funcionalidade-futura {
+    text-align: center;
+    color: #6c757d;
+    padding: 40px 20px;
+    font-style: italic;
+}
+
+/* Responsivo */
+@media (max-width: 1200px) {
+    .xl-grade-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .lg-grade-2,
+    .xl-grade-3 {
+        grid-template-columns: 1fr;
+    }
+    
+    .cabecalho-conteudo {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    
+    .icone-cozinha {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+    
+    .cabecalho-pedido-cozinha {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .status-pedido-cozinha {
+        align-self: flex-start;
+    }
+    
+    .titulo-principal-cozinha {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .item-pedido-cozinha {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .valor-item-cozinha {
+        align-self: flex-end;
+    }
+}
