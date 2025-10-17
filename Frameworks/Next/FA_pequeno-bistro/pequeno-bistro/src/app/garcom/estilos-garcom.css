@@ -1,0 +1,253 @@
+.pagina-garcom {
+    min-height: 100vh;
+    background-color: var(--background-color);
+}
+
+.icone-garcom {
+    width: 36px;
+    height: 36px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
+
+.icone-garcom span {
+    font-size: 16px;
+    color: white;
+}
+
+.titulo-pagina {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.saudacao-usuario {
+    color: var(--text-secondary);
+    margin-right: 16px;
+}
+
+/* Mensagens de erro */
+.mensagem-erro {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: var(--danger-color);
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border: 1px solid #fecaca;
+}
+
+/* Filtros de Categoria */
+.filtros-categoria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.botao-categoria {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--background-color);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.botao-categoria.ativo {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.botao-categoria:hover {
+    background-color: var(--surface-color);
+}
+
+.botao-categoria.ativo:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Itens do Cardápio */
+.cartao-item-cardapio {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.3s ease;
+    background-color: var(--surface-color);
+}
+
+.cartao-item-cardapio:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+
+.cabecalho-item-cardapio {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.nome-item-cardapio {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.preco-item-cardapio {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.categoria-item-cardapio {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-transform: capitalize;
+    margin-bottom: 12px;
+}
+
+.acao-item-cardapio {
+    margin-top: 12px;
+}
+
+/* Seção do Pedido */
+.pedido-fixo {
+    position: sticky;
+    top: 100px;
+}
+
+.lista-itens-pedido {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.pedido-vazio {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 40px 20px;
+    font-style: italic;
+}
+
+.item-pedido-atual {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.info-item-pedido {
+    flex: 1;
+}
+
+.nome-item-pedido {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
+}
+
+.preco-unitario-item {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.controles-quantidade {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.botao-quantidade {
+    width: 32px;
+    height: 32px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    color: var(--text-primary);
+}
+
+.botao-quantidade:hover {
+    background-color: var(--background-color);
+}
+
+.quantidade-item {
+    font-weight: 600;
+    width: 24px;
+    text-align: center;
+    color: var(--text-primary);
+}
+
+.botao-remover-item {
+    background: none;
+    border: none;
+    color: var(--danger-color);
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 8px;
+    padding: 4px;
+}
+
+.botao-remover-item:hover {
+    color: var(--danger-hover);
+}
+
+/* Resumo do Pedido */
+.resumo-pedido {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.linha-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.texto-total {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.valor-total {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--success-color);
+}
+
+@media (max-width: 480px) {
+    .item-pedido-atual {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .controles-quantidade {
+        align-self: flex-end;
+    }
+}

@@ -1,0 +1,303 @@
+.pagina-gerente {
+    min-height: 100vh;
+    background-color: var(--background-color);
+}
+
+.icone-gerente {
+    width: 36px;
+    height: 36px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
+
+.icone-gerente span {
+    font-size: 16px;
+    color: white;
+}
+
+.titulo-pagina {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.saudacao-usuario {
+    color: var(--text-secondary);
+    margin-right: 16px;
+}
+
+.tela-carregamento {
+    min-height: 100vh;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.texto-carregamento {
+    margin-top: 16px;
+    color: var(--text-secondary);
+}
+
+.cabecalho-secao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.titulo-secao {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Estilos do Cardápio */
+.secao-cardapio {
+    margin-top: 24px;
+}
+
+.cabecalho-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.nome-item {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.preco-item {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.categoria-item {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-transform: capitalize;
+    margin-bottom: 8px;
+}
+
+.descricao-item {
+    font-size: 14px;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.rodape-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-item {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-item.ativo {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status-item.inativo {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.botao-excluir {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+/* Estilos dos Pedidos */
+.secao-pedidos {
+    margin-top: 24px;
+}
+
+.cartao-faturamento {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1e40af 100%);
+    border-radius: 16px;
+    padding: 32px;
+    color: white;
+    margin-bottom: 32px;
+}
+
+.titulo-faturamento {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.valor-faturamento {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.descricao-faturamento {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.lista-pedidos {
+    margin-top: 32px;
+}
+
+.pedido {
+    margin-bottom: 20px;
+}
+
+.cabecalho-pedido {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.mesa-pedido {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
+}
+
+.data-pedido {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.info-pedido {
+    text-align: right;
+}
+
+.etiqueta-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.status-recebido {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.status-em-preparo {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.status-pronto {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status-entregue {
+    background-color: #e0e7ff;
+    color: #4f46e5;
+}
+
+.status-pago {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.status-cancelado {
+    background-color: #fecaca;
+    color: #991b1b;
+}
+
+.total-pedido {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 8px 0 0 0;
+}
+
+.itens-pedido {
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+}
+
+.titulo-itens {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.lista-itens {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.item-pedido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+/* Modal */
+.titulo-modal {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+.formulario-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.botoes-formulario {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+    .cabecalho-secao {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+    
+    .cabecalho-pedido {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .info-pedido {
+        text-align: left;
+    }
+    
+    .botoes-formulario {
+        flex-direction: column;
+    }
+    
+    .grade-3 {
+        grid-template-columns: 1fr;
+    }
+}
