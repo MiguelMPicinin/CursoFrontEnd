@@ -28,6 +28,16 @@ export async function getPedidoById(id: string) {
   }
 }
 
+// Adicione esta função ao seu PedidoController
+export async function getPedidosProntos(): Promise<IPedido[]> {
+  try {
+    return await PedidoService.buscarPedidosProntos();
+  } catch (error) {
+    console.error('Erro no controller getPedidosProntos:', error);
+    throw error;
+  }
+}
+
 export async function createPedido(data: Parameters<typeof PedidoService.criarPedido>[0]) {
   try {
     return await PedidoService.criarPedido(data);

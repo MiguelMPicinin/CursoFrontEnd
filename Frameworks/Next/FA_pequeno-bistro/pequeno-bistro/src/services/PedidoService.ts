@@ -85,6 +85,17 @@ export class PedidoService {
       .sort({ createdAt: 1 });
   }
 
+  // ✅ NOVA FUNÇÃO ADICIONADA - Buscar pedidos prontos
+  static async buscarPedidosProntos(): Promise<IPedido[]> {
+    await dbConnect();
+    return await Pedido.find({ 
+      status: 'Pronto' 
+    })
+      .populate('itens.item')
+      .populate('garcom', 'nome username')
+      .sort({ updatedAt: 1 }); // Ordena pelos mais antigos primeiro
+  }
+
   static async buscarPedidoPorId(id: string): Promise<IPedido | null> {
     await dbConnect();
     return await Pedido.findById(id)

@@ -1,3 +1,4 @@
+// app/gerente/page.tsx
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -89,7 +90,7 @@ export default function PaginaGerente() {
     verificarAutenticacao();
   }, [router]);
   
-  // 2. Função de Carregamento de Dados
+  // 2. Função de Carregamento de Dados - CORRIGIDA
   const carregarDados = async () => {
     if (!usuario) return;
     setCarregando(true);
@@ -112,34 +113,42 @@ export default function PaginaGerente() {
           throw new Error(dados.error || 'Falha ao carregar cardápio');
         }
       } else {
+        console.log('💰 Carregando pedidos para faturamento...');
         const resposta = await fetch('/api/pedidos', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
         });
         const dados = await resposta.json();
+        
+        console.log('📦 Resposta completa dos pedidos:', dados);
+        
         if (resposta.ok && dados.success) {
           setPedidos(dados.data);
           
-          // MÉTODO SIMPLES: Somar todos os precoUnitario de todos os itens de pedidos pagos
-          const pedidosPagos = dados.data.filter((pedido: Pedido) => 
-            pedido.status === 'Pago' || pedido.status === 'Entregue'
-          );
+          // DEBUG: Verificar todos os pedidos e seus status
+          console.log('📊 Total de pedidos:', dados.data.length);
+          dados.data.forEach((pedido: Pedido) => {
+            console.log(`📋 Pedido ${pedido._id}: Status=${pedido.status}, Total=${pedido.total}`);
+          });
+          
+          // CÁLCULO CORRIGIDO: Usar o campo total dos pedidos
+          const pedidosPagos = dados.data.filter((pedido: Pedido) => {
+            const isPagoOuEntregue = pedido.status === 'Pago' || pedido.status === 'Entregue';
+            console.log(`🔍 Pedido ${pedido._id}: ${pedido.status} -> ${isPagoOuEntregue ? 'INCLUÍDO' : 'excluído'}`);
+            return isPagoOuEntregue;
+          });
           
           let totalFaturamento = 0;
           
-          // Percorre todos os pedidos pagos
+          // Soma os totais dos pedidos pagos/entregues
           pedidosPagos.forEach((pedido: Pedido) => {
-            // Percorre todos os itens de cada pedido
-            pedido.itens.forEach((itemPedido: ItemPedido) => {
-              // Soma: quantidade × precoUnitario
-              totalFaturamento += itemPedido.quantidade * itemPedido.precoUnitario;
-            });
+            console.log(`➕ Somando pedido ${pedido._id}: R$ ${pedido.total}`);
+            totalFaturamento += pedido.total;
           });
           
-          console.log('Faturamento calculado:', totalFaturamento);
-          console.log('Pedidos pagos encontrados:', pedidosPagos.length);
-          console.log('Total de itens processados:', pedidosPagos.reduce((acc: number, pedido: Pedido) => acc + pedido.itens.length, 0));
+          console.log('💵 Faturamento calculado:', totalFaturamento);
+          console.log('✅ Pedidos pagos/entregues encontrados:', pedidosPagos.length);
           
           setFaturamento(totalFaturamento);
         } else {
@@ -147,7 +156,7 @@ export default function PaginaGerente() {
         }
       }
     } catch (erro: any) {
-      console.error('Erro ao carregar dados:', erro);
+      console.error('❌ Erro ao carregar dados:', erro);
       setErro('Erro ao carregar dados: ' + erro.message);
     } finally {
       setCarregando(false);
@@ -289,13 +298,13 @@ export default function PaginaGerente() {
               className={`aba ${abaAtiva === 'cardapio' ? 'ativa' : ''}`}
               onClick={() => setAbaAtiva('cardapio')}
             >
-              Gerenciar Cardápio
+              📋 Gerenciar Cardápio
             </li>
             <li 
               className={`aba ${abaAtiva === 'pedidos' ? 'ativa' : ''}`}
               onClick={() => setAbaAtiva('pedidos')}
             >
-              Pedidos e Faturamento
+              📊 Pedidos e Faturamento
             </li>
           </ul>
         </div>
@@ -311,7 +320,7 @@ export default function PaginaGerente() {
         {abaAtiva === 'cardapio' && (
           <div className="secao-cardapio">
             <div className="cabecalho-secao">
-              <h2 className="titulo-secao">Cardápio do Restaurante</h2>
+              <h2 className="titulo-secao">🍽️ Cardápio do Restaurante</h2>
               <button
                 onClick={() => {
                   setErro(null);
@@ -319,7 +328,7 @@ export default function PaginaGerente() {
                 }}
                 className="botao botao-primario"
               >
-                + Adicionar Novo Item
+                ➕ Adicionar Novo Item
               </button>
             </div>
 
@@ -337,6 +346,7 @@ export default function PaginaGerente() {
                           onChange={(e) => setDadosFormulario({ ...dadosFormulario, nome: e.target.value })}
                           className="entrada-formulario"
                           required
+                          placeholder="Ex: Pizza Margherita"
                         />
                       </div>
                       <div className="grupo-formulario">
@@ -349,6 +359,7 @@ export default function PaginaGerente() {
                           onChange={(e) => setDadosFormulario({ ...dadosFormulario, preco: e.target.value })}
                           className="entrada-formulario"
                           required
+                          placeholder="Ex: 29.90"
                         />
                       </div>
                       <div className="grupo-formulario">
@@ -359,6 +370,7 @@ export default function PaginaGerente() {
                           onChange={(e) => setDadosFormulario({ ...dadosFormulario, categoria: e.target.value })}
                           className="entrada-formulario"
                           required
+                          placeholder="Ex: Prato Principal"
                         />
                       </div>
                       <div className="grupo-formulario">
@@ -368,6 +380,7 @@ export default function PaginaGerente() {
                           onChange={(e) => setDadosFormulario({ ...dadosFormulario, descricao: e.target.value })}
                           className="entrada-formulario area-texto"
                           rows={3}
+                          placeholder="Descreva o item..."
                         />
                       </div>
                       <div className="botoes-formulario">
@@ -375,14 +388,14 @@ export default function PaginaGerente() {
                           type="submit"
                           className="botao botao-primario flex-1"
                         >
-                          Salvar Item
+                          💾 Salvar Item
                         </button>
                         <button
                           type="button"
                           onClick={() => setMostrarFormulario(false)}
                           className="botao botao-secundario flex-1"
                         >
-                          Cancelar
+                          ❌ Cancelar
                         </button>
                       </div>
                     </form>
@@ -420,13 +433,13 @@ export default function PaginaGerente() {
                         )}
                         <div className="rodape-item">
                           <span className={`status-item ${item.ativo ? 'ativo' : 'inativo'}`}>
-                            {item.ativo ? 'Ativo' : 'Inativo'}
+                            {item.ativo ? '✅ Ativo' : '❌ Inativo'}
                           </span>
                           <button
                             onClick={() => excluirItem(item._id)}
                             className="botao botao-perigo botao-excluir"
                           >
-                            Excluir
+                            🗑️ Excluir
                           </button>
                         </div>
                       </div>
@@ -441,15 +454,21 @@ export default function PaginaGerente() {
         {abaAtiva === 'pedidos' && (
           <div className="secao-pedidos">
             <div className="cartao-faturamento">
-              <h2 className="titulo-faturamento">Faturamento Total</h2>
+              <h2 className="titulo-faturamento">💰 Faturamento Total</h2>
               <p className="valor-faturamento">R$ {faturamento.toFixed(2)}</p>
               <p className="descricao-faturamento">
-                Soma de todos os itens vendidos em pedidos pagos/entregues
+                Soma de todos os pedidos com status "Pago" ou "Entregue"
               </p>
+              <div className="info-faturamento">
+                <small>
+                  💡 <strong>Dica:</strong> Para um pedido contar no faturamento, 
+                  ele deve ser marcado como "Entregue" na cozinha ou "Pago" no sistema.
+                </small>
+              </div>
             </div>
 
             <div className="lista-pedidos">
-              <h2 className="titulo-secao">Todos os Pedidos</h2>
+              <h2 className="titulo-secao">📋 Todos os Pedidos</h2>
               
               {carregando ? (
                 <div className="tela-carregamento">
@@ -471,15 +490,19 @@ export default function PaginaGerente() {
                           <div className="cabecalho-pedido">
                             <div>
                               <h3 className="mesa-pedido">
-                                Mesa {pedido.numeroMesa}
+                                🪑 Mesa {pedido.numeroMesa}
                               </h3>
                               <p className="data-pedido">
-                                {new Date(pedido.createdAt).toLocaleString('pt-BR')}
+                                📅 {new Date(pedido.createdAt).toLocaleString('pt-BR')}
                               </p>
                             </div>
                             <div className="info-pedido">
                               <span className={`etiqueta-status status-${pedido.status.toLowerCase().replace(' ', '-')}`}>
-                                {pedido.status}
+                                {pedido.status === 'Pago' ? '💰' : 
+                                 pedido.status === 'Entregue' ? '✅' :
+                                 pedido.status === 'Pronto' ? '👨‍🍳' :
+                                 pedido.status === 'Em Preparo' ? '🍳' :
+                                 pedido.status === 'Recebido' ? '📥' : '❌'} {pedido.status}
                               </span>
                               <p className="total-pedido">
                                 R$ {pedido.total.toFixed(2)}
@@ -488,7 +511,7 @@ export default function PaginaGerente() {
                           </div>
                           
                           <div className="itens-pedido">
-                            <h4 className="titulo-itens">Itens do Pedido:</h4>
+                            <h4 className="titulo-itens">🍽️ Itens do Pedido:</h4>
                             <div className="lista-itens">
                               {pedido.itens.map((item, index) => (
                                 <div key={index} className="item-pedido">

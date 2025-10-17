@@ -2,14 +2,12 @@ import { deletePedido, getPedidoById, updateStatusPedido, fecharContaPedido } fr
 import { NextRequest, NextResponse } from "next/server";
 
 interface RouteParams {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
 }
 
 export async function PATCH(req: NextRequest, { params }: RouteParams) {
   try {
-    const { id } = params;
+    const { id } = await params; // ✅ Adicionado await
     const data = await req.json();
     let pedidoAtualizado = null;
     
@@ -35,13 +33,13 @@ export async function PATCH(req: NextRequest, { params }: RouteParams) {
   }
 }
 
-export async function GET ({ params }: RouteParams){
+export async function GET(req: NextRequest, { params }: RouteParams) {
   try {
-    const { id } = params;
+    const { id } = await params; // ✅ Adicionado await
     const data = await getPedidoById(id);
     
     if (!data) {
-      return NextResponse.json({success:false, error: "Pedido não encontrado"}, { status: 404 }); // 404 Not Found
+      return NextResponse.json({success:false, error: "Pedido não encontrado"}, { status: 404 });
     }
     
     return NextResponse.json({success:true, data:data});
@@ -51,17 +49,16 @@ export async function GET ({ params }: RouteParams){
   }
 }
 
-export async function DELETE({ params }: RouteParams) {
+export async function DELETE(req: NextRequest, { params }: RouteParams) {
   try {
-    const { id } = params;
+    const { id } = await params; // ✅ Adicionado await
     const result = await deletePedido(id);
     
     if (!result.success) {
-      // O controller retorna { success: false } se o ID não for encontrado
       return NextResponse.json({success: false, error: "Pedido não encontrado"}, { status: 404 });
     }
 
-    return NextResponse.json({success: true, data: {}}, { status: 204 }); // 204 No Content para deleção bem-sucedida
+    return NextResponse.json({success: true, data: {}}, { status: 204 });
   } catch (error) {
     console.error('Erro DELETE /api/pedidos/[id]:', error);
     return NextResponse.json({success:false, error: 'Erro ao deletar pedido'}, { status: 500 });       
