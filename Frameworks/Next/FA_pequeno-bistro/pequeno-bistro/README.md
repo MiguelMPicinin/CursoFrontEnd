@@ -230,6 +230,63 @@ stateDiagram-v2
     Cancelado --> [*] : Finalizado
 ```
 
+### Diagrama de Casos de Uso
+
+```mermaid
+graph TD
+    A[Gerente] --> A1[Gerenciar Cardápio]
+    A --> A2[Ver Relatórios]
+    A --> A3[Monitorar Pedidos]
+    
+    B[Garçom] --> B1[Criar Pedidos]
+    B --> B2[Gerenciar Mesas]
+    B --> B3[Fechar Contas]
+    
+    C[Cozinha] --> C1[Ver Pedidos]
+    C --> C2[Atualizar Status]
+    C --> C3[Notificar Prontos]
+    
+    A1 --> A11[Adicionar Itens]
+    A1 --> A12[Editar Itens]
+    A1 --> A13[Remover Itens]
+    
+    B1 --> B11[Selecionar Mesa]
+    B1 --> B12[Adicionar Itens]
+    B1 --> B13[Enviar Cozinha]
+    
+    C2 --> C21[Em Preparo]
+    C2 --> C22[Pronto]
+```
+
+### Diagrama de Fluxo de Dados
+
+```mermaid
+flowchart TD
+    Start[Login] --> Auth{Autenticar}
+    Auth -->|Sucesso| Redirect[Redirecionar]
+    Auth -->|Falha| Error[Erro Login]
+    
+    Redirect --> Tipo{Tipo Usuário}
+    
+    Tipo -->|Gerente| G1[Dashboard]
+    G1 --> G2[Cardápio]
+    G2 --> G3[Relatórios]
+    
+    Tipo -->|Garçom| GC1[Selecionar Mesa]
+    GC1 --> GC2[Adicionar Itens]
+    GC2 --> GC3[Enviar Cozinha]
+    GC3 --> GC4[Aguardar Pronto]
+    
+    Tipo -->|Cozinha| CZ1[Ver Pedidos]
+    CZ1 --> CZ2[Preparar]
+    CZ2 --> CZ3[Notificar Pronto]
+    
+    GC4 --> Fechar[Fechar Pedido]
+    G3 --> Logout[Sair]
+    CZ3 --> Logout
+    Fechar --> Logout
+```
+
 ## 🔌 API
 
 ### Autenticação
